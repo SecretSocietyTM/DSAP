@@ -1,21 +1,22 @@
 import { Object2D } from "./Object2D.js";
 
-export class Square extends Object2D {
-    constructor(x, y, width, height) {
+const rectChange_event = {type: "rectChange"};
+
+export class Box extends Object2D {
+    constructor(x = 0, y = 0, width, height) {
         super();
 
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        defineProperty(this, "x", x);
+        defineProperty(this, "y", y);
+        defineProperty(this, "width", width);
+        defineProperty(this, "height", height);
 
-        // needs to be updated dynamically whenever any of the above change
-        this.rect = {
-            left: x,
-            right: x + width,
-            top: y,
-            bottom: y + height
-        };
+        this.rect = calculateRect(this);
+
+        this.addEventListener("rectChange", () => {
+            this.rect = calculateRect(this);
+        });
+
 
         // default values that can be overwritten
         this.draw_type = 0 // 0 = fill, 1 = stroke
@@ -24,6 +25,7 @@ export class Square extends Object2D {
         this.stroke_color = "black";
         this.stroke_width = 5; // TODO: figure out a way to alter the x/y/width/height to adjust for use of strokes. 
         // It can be a setting but for now I do not like that the stroke increases the width/height of the object
+        // doing this will require recalculating the rect to also include the width of the stroke
 
         // TODO: temp solution for text on the boxes
         this.text = null;
@@ -74,8 +76,6 @@ export class Square extends Object2D {
             y: this.y + this.height / 2
         };
 
-        console.log("center", center);
-
         ctx.fillStyle = this.font_color;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -92,4 +92,33 @@ export class Square extends Object2D {
 
         return false;
     }
+}
+
+function calculateRect(object) {
+    return {
+        left: object.x,
+        right: object.x + object.width,
+        top: object.y,
+        bottom: object.y + object.height
+    };
+}
+
+function defineProperty(scope, prop_name, default_value) {
+
+    let prop_value = default_value;
+
+    Object.defineProperty(scope, prop_name, {
+
+        get: function() { 
+            return prop_value;
+        },
+
+        set: function(value) {
+            if (prop_value !== value) {
+                prop_value = value;
+
+                scope.dispatchEvent(rectChange_event);
+            }
+        }
+    });
 }

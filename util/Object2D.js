@@ -1,3 +1,5 @@
+import EventDispatcher from "./EventDispatcher.js";
+
 let id = 0;
 
 function createId() {
@@ -7,8 +9,10 @@ function createId() {
     return result;
 }
 
-export class Object2D {
+export class Object2D extends EventDispatcher {
     constructor() {
+        super();
+
         this.id = createId();
     }
 

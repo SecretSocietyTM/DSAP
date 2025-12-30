@@ -23,20 +23,24 @@ b5.fill_color = "gray";
 b5.use_text = true;
 b5.text = "1";
 b5.draw_type = 1;
-b5.stroke_width = 5;
+b5.stroke_width = 30;
 
-const t1 = new Box(500, 200, 100, 100);
+const t1 = new Box(500, 175, 100, 150);
 t1.fill_color = "rgba(0, 255, 150, 0.6)";
 t1.selectable = false;
 
-console.log("b5 (target)", b5);
-console.log("t1 (expected)", t1.rect);
+const t2 = new Box(600, 175, 100, 150);
+t2.fill_color = "rgba(255, 0, 0, 0.6)";
+t2.selectable = false;
+
+/* console.log("b5 (target)", b5);
+console.log("t1 (expected)", t1.rect); */
 
 // TODO: below is needed to allow interaction
 objects.push(
     b1,b2,b3,
     b4,b5,b6,
-    t1
+    t1, /* t2 */
 );
 objects.forEach(object => object.draw(ctx));
 

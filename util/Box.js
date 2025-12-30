@@ -8,33 +8,21 @@ export class Box extends Object2D {
     constructor(x = 0, y = 0, width, height) {
         super();
 
-        defineProperty(this, "x", x, s => s._dirty.rect = true);
-        defineProperty(this, "y", y, s => s._dirty.rect = true);
-        defineProperty(this, "width", width, s => s._dirty.rect = true);
-        defineProperty(this, "height", height, s => s._dirty.rect = true);
+        defineProperty(this, "x", x); // Example arrow function setting dirty flag {s => s._dirty.rect = true}
+        defineProperty(this, "y", y);
+        defineProperty(this, "width", width);
+        defineProperty(this, "height", height);
 
-        defineProperty(this, "draw_type", DRAW_TYPE.FILL, s => {
-            s._dirty.geometry = true;
-            s._dirty.rect = true;
-        });
+        defineProperty(this, "draw_type", DRAW_TYPE.FILL);
+        defineProperty(this, "stroke_width", 1);
 
-        defineProperty(this, "stroke_width", 1, s => {
-            if (s.draw_type === DRAW_TYPE.STROKE) {
-                s._dirty.geometry = true;
-                s._dirty.rect = true;
-            }
-        });
+        this.rect = updateRect(this);
 
-        
-
-        // rect must be calculated differently depending on the draw_type
-        this.rect = this.updateRect(this);
-
-        // Box settings
+        // box draw settings
         this.fill_color = "black";
         this.stroke_color = "black";
 
-        // Text settings
+        // text draw settings
         this.text = null;
         this.font_weight = "normal";
         this.font_size = 36;
@@ -49,7 +37,6 @@ export class Box extends Object2D {
         this.updating = false;
 
         this._dirty = {
-            geometry: false,
             rect: false,
         };
 
@@ -60,73 +47,19 @@ export class Box extends Object2D {
         });
     }
 
+    // NOTE: keeping this in case I want to use it in the future.
     update() {
-        if (!this._dirty.geometry && !this._dirty.rect) return;
 
         this.updating = true;
 
-        if (this._dirty.geometry) {
-            this.updateGeometry();
-        }
+        // NOTE: old implementation had a check for the dirty flag
+        // since there were more than 1 flag
+        /* if (this._dirty.rect) */ 
 
-        if (this._dirty.rect) {
-            this.updateRect(this);
-        }
+        this.rect = updateRect(this);
 
         this.updating = false;
-        this._dirty.geometry = false;
         this._dirty.rect = false;
-    }
-
-    updateGeometry() {
-        const div2 = this.stroke_width / 2;
-
-        switch (this.draw_type) {
-        case DRAW_TYPE.FILL:
-            this.x = this.x - div2;
-            this.y = this.y - div2;
-            this.width = this.width + div2;
-            this.height = this.height + div2;
-            break;
-        case DRAW_TYPE.STROKE:
-            this.x = this.x + div2;
-            this.y = this.y + div2;
-            this.width = this.width - this.stroke_width;
-            this.height = this.height - this.stroke_width;
-            break;
-        default: 
-            throw new Error("Box object does not have correct draw_type value. Set to either FILL (0) or STROKE (1).");
-        }
-    }
-
-    updateRect(object) {
-
-        let rect = {};
-
-        switch (object.draw_type) {
-        case DRAW_TYPE.FILL:
-            rect = {
-                left: object.x,
-                right: object.x + object.width,
-                top: object.y,
-                bottom: object.y + object.height
-            }
-            break;
-        case DRAW_TYPE.STROKE:
-            const div2 = object.stroke_width / 2;
-
-            rect = {
-                left: object.x - div2,
-                right: object.x + object.width + div2,
-                top: object.y - div2,
-                bottom: object.y + object.height + div2
-            }
-            break;
-        default: 
-            throw new Error("Box object does not have correct draw_type value. Set to either FILL (0) or STROKE (1).");
-        }
-
-        return rect;
     }
 
     draw(ctx) {
@@ -152,9 +85,17 @@ export class Box extends Object2D {
     }
 
     stroke(ctx) {
+        const sw = this.stroke_width;
+
         ctx.strokeStyle = this.stroke_color;
-        ctx.lineWidth = this.stroke_width;
-        ctx.strokeRect(this.x, this.y, this.width, this.height);
+        ctx.lineWidth = sw;
+
+        ctx.strokeRect(
+            this.x + (sw / 2), 
+            this.y + (sw / 2), 
+            this.width - sw, 
+            this.height - sw
+        );
     }
 
     fillText(ctx) {
@@ -187,6 +128,15 @@ export class Box extends Object2D {
     }
 }
 
+function updateRect(object) {
+    return {
+        left: object.x,
+        right: object.x + object.width,
+        top: object.y,
+        bottom: object.y + object.height
+    }
+}
+
 function defineProperty(scope, prop_name, default_value, onChange) {
 
     let prop_value = default_value;
@@ -201,6 +151,7 @@ function defineProperty(scope, prop_name, default_value, onChange) {
             if (prop_value !== value) {
                 prop_value = value;
 
+                // NOTE: not in use as of Dec 29; 10:24PM
                 if (onChange) onChange(scope);
 
                 if (!scope.updating) {

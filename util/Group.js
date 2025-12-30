@@ -29,7 +29,6 @@ export class Group extends Object2D {
             switch (this.type) {
             case GROUP_TYPE.ROW:
                 object.x = last_child.x + last_child.width + this.gap;
-                /* object.x = last_child.rect.right + this.gap; */
                 object.y = this.y;
                 break;
             case GROUP_TYPE.COLUMN:

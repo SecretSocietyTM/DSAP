@@ -20,12 +20,16 @@ export class Group extends Object2D {
 
     addChild(object) {
 
-        if (this.children.length !== 0) {
+        if (this.children.length === 0) {
+            object.x = this.x;
+            object.y = this.y;
+        } else {
             const last_child = this.children[this.children.length - 1];
+
             switch (this.type) {
             case GROUP_TYPE.ROW:
-                /* object.x = last_child.x + last_child.width + this.gap; */
-                object.x = last_child.rect.right + this.gap;
+                object.x = last_child.x + last_child.width + this.gap;
+                /* object.x = last_child.rect.right + this.gap; */
                 object.y = this.y;
                 break;
             case GROUP_TYPE.COLUMN:
@@ -33,11 +37,8 @@ export class Group extends Object2D {
                 object.y = last_child.y + last_child.height + this.gap;
                 break;
             default: 
-                throw new Error("Group object does not have correct type value. Set to either ROW or COLUMN.");
+                throw new Error("Group object does not have correct type value. Set to either ROW (0) or COLUMN (1).");
             }
-        } else {
-            object.x = this.x;
-            object.y = this.y;
         }
 
         this.children.push(object);

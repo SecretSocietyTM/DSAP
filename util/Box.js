@@ -112,7 +112,7 @@ export class Box extends Object2D {
 
         ctx.fillStyle = this.font_color;
         ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
+        ctx.textBaseline = "middle"; // TODO: this doesn't quite center the text
         ctx.fillText(this.text, center.x, center.y, this.width);
     }
 

@@ -10,12 +10,19 @@ export class Group extends Object2D {
         this.x = x;
         this.y = y;
 
+        this.width = 0;
+        this.height = 0;
+
         // row by default
         this.type = GROUP_TYPE.ROW;
 
         this.children = [];
+        this.len = 0;
 
         this.gap = 0;
+        this.border = 0;
+
+        this.fill_color = "black" // TODO: can I use transparant?
     }
 
     addChild(object) {
@@ -41,9 +48,21 @@ export class Group extends Object2D {
         }
 
         this.children.push(object);
+        this.len++;
+
+        this.width = (object.x + object.width) - this.children[0].x;
+        this.height = (object.y + object.height) - this.children[0].y;
     }
 
     draw(ctx) {
+        ctx.fillStyle = this.fill_color;
+        ctx.fillRect(
+            this.x - this.border, 
+            this.y - this.border, 
+            this.width + (this.border * 2), 
+            this.height + (this.border * 2)
+        );
+
         this.children.forEach(child => child.draw(ctx));
     }
 }

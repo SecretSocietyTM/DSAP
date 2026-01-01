@@ -8,11 +8,11 @@ class StaticArray {
     }
 
     // O(1)
-    insert(value, i) {
+    insert(value, index) {
 
-        if (i < 0 || i > len) throw new Error("Index i out of bounds");
+        if (index < 0 || index > len) throw new Error("Index i out of bounds");
 
-        this.arr[i] = value;
+        this.arr[index] = value;
         this.len_filled++;
     }
 

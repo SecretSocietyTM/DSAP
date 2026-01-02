@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window example</title>
+
+    <!-- general styling -->
+    <link rel="stylesheet" href="../../W98.css">
+
+    <!-- main component -->
+    <script src="./window.js" defer></script>
+    <link rel="stylesheet" href="./window.css">
+
+    <!-- seconday components -->
+    <script src="../titlebar/titlebar.js" defer></script>
+    <link rel="stylesheet" href="../titlebar/titlebar.css">
+
+    <script src="../button/button.js" defer></script>
+    <link rel="stylesheet" href="../button/button.css">
+
+    <script src="../windowchrome/windowchrome.js" defer></script>
+    <link rel="stylesheet" href="../windowchrome/windowchrome.css">
+
+    <script src="../clientarea/clientarea.js" defer></script>
+    <link rel="stylesheet" href="../clientarea/clientarea.css">
+
+    <script src="../taskbar/taskbar.js" defer></script>
+    <link rel="stylesheet" href="../taskbar/taskbar.css">
+</head>
+<body style="align-items: start;">
+
+<!-- Below is just an example for my sake because I am losing it! -->
+<div class="window">
+    <div class="titlebar" style="background-color: #08456B;">
+        <div class="titlebar__left">
+            <div class="titlebar_appicon"></div>
+            <p class="titlebar_title">Control Panel</p>
+        </div>
+        <div class="titlebar_buttons__container">
+            <button type="button" class="button-a">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+            <button type="button" class="button-a">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+            <button type="button" class="button-a titlebar_buttons__close">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="windowchrome-a">
+        <div class="windowchrome windowchrome-b" id="windowchrome">
+            <div class="windowchrome__section" style="height: 50px"></div>
+            <div class="windowchrome__section" style="height: 80px"></div>
+        </div>
+    </div>
+    <div class="clientarea-c" style="width: 100%; height: 400px;">
+        <div class="clientarea-d">
+            <div class="clientarea" style="height: 100%; background-color: blue;"></div>
+        </div>
+    </div>
+    <div class="taskbar-a" style="width: 100%; height: 55px;">
+        <div class="taskbar-b">
+            <div class="taskbar">
+                <button type="button" class="button-a">
+                    <div class="button-b">
+                        <div class="button" style="width: 100px; height: 35px;"></div>
+                    </div>
+                </button>
+                <button type="button" class="button-a">
+                    <div class="button-b">
+                        <div class="button" style="width: 100px; height: 35px;"></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<style>
+</style>

@@ -1,0 +1,22 @@
+.taskbar-a {
+    
+    min-height: 55px;
+
+    border-top: 2px solid #DEDFDE;
+}
+
+.taskbar-b {
+    width: 100%;
+    height: 100%;
+
+    padding: 4px;
+
+    border-top: 2px solid white;
+
+    background-color: #BDBEBD;
+}
+
+.taskbar {
+    display: flex;
+    gap: 1rem
+}

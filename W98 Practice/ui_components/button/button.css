@@ -1,0 +1,58 @@
+/* 
+Below are the classes for styling the 
+button container 
+*/
+
+/* 
+TODO: should this be a global property 
+to remove default styles? 
+*/
+button {
+    border: none;
+}
+
+.button-a {
+    padding-top:  2px;
+    padding-left: 2px;
+
+    border-bottom: 2px solid black;
+    border-right:  2px solid black;
+
+    background-color: white;
+}
+
+.button-b {
+    padding-top:  2px;
+    padding-left: 2px;
+
+    border-bottom: 2px solid #7B7D7B;
+    border-right:  2px solid #7B7D7B;
+
+    background-color: #DEDFDE;
+}
+
+/* 
+TODO: note - currently I have it so that the button "grows" around
+whatever is a child of the .button class. However this causes weird sizing
+issues with the button at least in the current implementation of 
+the titlebar / window (01/02 - 12:08AM)
+*/
+.button {
+    background-color: #BDBEBD;
+}
+
+
+/* interaction */
+.button-a:active {
+    border-bottom-color: white;
+    border-right-color:  white;
+
+    background-color: black;
+}
+
+.button-b:active {
+    border-bottom-color: #DEDFDE;
+    border-right-color: #DEDFDE;
+
+    background-color: #7B7D7B;
+}

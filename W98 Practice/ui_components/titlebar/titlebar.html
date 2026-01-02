@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>titlebar example</title>
+
+    <!-- general styling -->
+    <link rel="stylesheet" href="../../W98.css">
+
+    <!-- main component -->
+    <script src="./titlebar.js" defer></script>
+    <link rel="stylesheet" href="./titlebar.css">
+
+    <!-- seconday components -->
+     <script src="../button/button.js" defer></script>
+     <link rel="stylesheet" href="../button/button.css">
+</head>
+<body>
+
+<!-- 
+    Any internal styles are simply for show and 
+    not a part of the component
+-->
+
+<div style="display: grid; gap: 5rem">
+
+    <!-- With an app icon -->
+    <div class="titlebar" style="width: 80vw;background-color: #08456B;">
+        <div class="titlebar__left">
+            <div class="titlebar_appicon"></div>
+            <p class="titlebar_title">Control Panely</p>
+        </div>
+        <div class="titlebar_buttons__container">
+            <button type="button" class="button-a">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+            <button type="button" class="button-a">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+            <button type="button" class="button-a titlebar_buttons__close">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- With no app icon -->
+    <div class="titlebar" style="width: 80vw;background-color: #08456B;">
+        <div class="titlebar__left">
+            <p class="titlebar_title">Control Panely</p>
+        </div>
+        <div class="titlebar_buttons__container">
+            <button type="button" class="button-a">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+            <button type="button" class="button-a">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+            <button type="button" class="button-a titlebar_buttons__close">
+                <div class="button-b">
+                    <div class="button" style="width: 15px; height: 15px;"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- 
+    TODO: figure out why changing the width/height of the button causes the thing to break.
+
+    Note: I figured it out. Its the damn prop display: flex. THe issue is only caused if one of the
+    buttons is larger than any of the others as this forces the size of the flex area to grow
+    which the damn things try to follow.
+
+    Possible solutions:
+    * dont use flex. instead use whatever forces elements to be inline
+    * find out whether one of the flex properites (grow, shrink, whatever) fixes the issue.
+     -->
+</div>
+
+</body>
+</html>

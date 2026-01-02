@@ -3,26 +3,6 @@ Below are the classes for styling the
 clientarea container 
 */
 .clientarea-a {
-    border-top:    2px solid #7B7D7B;
-    border-left:   2px solid #7B7D7B;
-    
-    border-right:  2px solid white;
-    border-bottom: 2px solid white;
-}
-
-.clientarea-b {
-    width: 100%;
-    height: 100%;
-
-    border-top:    2px solid black;
-    border-left:   2px solid black;
-    
-    border-right:  2px solid #BDBEBD;
-    border-bottom: 2px solid #BDBEBD;
-}
-
-/* TODO: note I like c and d more */
-.clientarea-c {
     padding-right: 2px;
     padding-bottom: 2px;
 
@@ -32,7 +12,7 @@ clientarea container
     background-color: white;
 }
 
-.clientarea-d {
+.clientarea-b {
     width: 100%;
     height: 100%;
 

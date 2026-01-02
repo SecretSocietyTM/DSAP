@@ -7,7 +7,6 @@ window container
 /* ///////////// End style groups /////////////*/
 
 .window { /* TODO: remove, temp style */
-    width: 100vw;
 
     /* TODO: for now just work on fullscreen window */
     /* padding: 8px;
@@ -18,31 +17,8 @@ window container
     inset 0 0 0 8px #BDBEBD; */
 }
 
-.window_titlebar { /* TODO: remove, temp style */
-    width: 100%;
-
-    background-color: #08517B;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 /* 
-TODO: figure out how the size applied to 
-windowchrome is being applied to windowchrome
-(from windowchrome.css)
-
-Notably .windowchrome is a child of 
-.windowchrome-a which is a child of
-.window. Somehow the size is being propogated
-through despite what I have previously believed
-to be the expected behavior.
+TODO: need to "modularize" the window code 
+to support windows that may not be fullscreened.
 */

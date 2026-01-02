@@ -1,3 +1,7 @@
+/* 
+This file is from three.js source code.
+*/
+
 class UIElement {
 
 	constructor( dom ) {

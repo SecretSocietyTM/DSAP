@@ -9,7 +9,7 @@ windowchrome container
     background-color: white;
 
     border-top: 2px solid #BDBEBD;
-    border-bottom: 6px solid #BDBEBD;
+    border-bottom: 8px solid #BDBEBD;
 }
 
 .windowchrome-b {
@@ -25,17 +25,6 @@ windowchrome container
 
 
 /* 
-This is the actual container class for the 
-windowchrome bars that can be added which are:
-    * title bar (section with blue background) (maybe excldude the title bar)
-    * menu bar  (section with File, Edit, View)
-    * tool bar  (section with buttons / tools)
- */
-.windowchrome {
-    width: 100%;
-}
-
-/* 
 This is the container for a single section of
 the windowchrome like the menu bar and tool bar.
 */
@@ -45,5 +34,11 @@ the windowchrome like the menu bar and tool bar.
     /* Styles modified by JS */
     margin-block-end: 2px;
     border-bottom: 2px solid #7B7D7B;
-    /* TODO: also needs border-right */
+    
+    /* 
+    TODO: also needs border-right for that cool effect
+    seen on the menubar / windows logo thing
+    This will also require JS to remove the border
+    if there is only 1 element in a row though
+    */
 }

@@ -28,7 +28,7 @@
     <!-- With an app icon -->
     <div class="titlebar" style="width: 80vw;background-color: #08456B;">
         <div class="titlebar__left">
-            <div class="titlebar_appicon"></div>
+            <img src="" alt="" class="titlebar_appicon">
             <p class="titlebar_title">Control Panely</p>
         </div>
         <div class="titlebar_buttons__container">
@@ -74,17 +74,6 @@
         </div>
     </div>
 
-    <!-- 
-    TODO: figure out why changing the width/height of the button causes the thing to break.
-
-    Note: I figured it out. Its the damn prop display: flex. THe issue is only caused if one of the
-    buttons is larger than any of the others as this forces the size of the flex area to grow
-    which the damn things try to follow.
-
-    Possible solutions:
-    * dont use flex. instead use whatever forces elements to be inline
-    * find out whether one of the flex properites (grow, shrink, whatever) fixes the issue.
-     -->
 </div>
 
 </body>

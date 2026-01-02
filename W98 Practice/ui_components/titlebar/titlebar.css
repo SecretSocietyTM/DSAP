@@ -1,6 +1,7 @@
 .titlebar {
     width: 100%;
-    min-height: 30px;
+
+    height: 36px; /* Should remain constant */
 
     display: flex;
     align-items: center;
@@ -12,9 +13,17 @@
 
 .titlebar_appicon {
 
+    /* 
+    Appicon in its current state (with TODO below) is not 
+    aligned properly with the other elements. Figure out why.
+    align-self: center;
+    seems to fix it but I feel I should not even need this
+    */
     /* TODO: remove, temp props */
     width: 20px;
     height: 20px;
+
+    align-self: center;
 
     border-top: 2px solid white;
     border-left: 2px solid white;
@@ -29,14 +38,17 @@
     margin-block-start: 1px;
 
     font-family: "W95font";
-    font-size: 1.2rem;       /* NOTE: The titlebar should never be resized... */
+    font-size: 1.7rem; /* NOTE: The titlebar should never be resized... */
     font-weight: bold;
     letter-spacing: 0.1em;
 
     color: white;
 }
 
-
+/* 
+TODO: not super important, but I want the right side buttons
+to scale uniformly to fix the specified area
+*/
 
 /* 
 Below are the "sub" containers
@@ -54,3 +66,11 @@ Below are the "sub" containers
     margin-inline-start: 4px;
 }
 
+
+
+/* 
+TODO: solution for "button resizing due to flex" issue 
+*/
+.button-a {
+    align-self: center;
+}

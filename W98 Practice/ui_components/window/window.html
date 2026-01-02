@@ -31,42 +31,44 @@
 <body style="align-items: start;">
 
 <!-- Below is just an example for my sake because I am losing it! -->
-<div class="window">
-    <div class="titlebar" style="background-color: #08456B;">
-        <div class="titlebar__left">
-            <div class="titlebar_appicon"></div>
-            <p class="titlebar_title">Control Panel</p>
+<div style="display: flex; flex-direction: column;  width: 100vw; height: 100vh;">
+    <div class="window" style="display: grid; grid-template-rows: max-content max-content auto; width: 100%; flex-grow: 1;">
+        <div class="titlebar" style="background-color: #08456B;">
+            <div class="titlebar__left">
+                <div class="titlebar_appicon"></div>
+                <p class="titlebar_title">Control Panel</p>
+            </div>
+            <div class="titlebar_buttons__container">
+                <button type="button" class="button-a">
+                    <div class="button-b">
+                        <div class="button" style="width: 15px; height: 15px;"></div>
+                    </div>
+                </button>
+                <button type="button" class="button-a">
+                    <div class="button-b">
+                        <div class="button" style="width: 15px; height: 15px;"></div>
+                    </div>
+                </button>
+                <button type="button" class="button-a titlebar_buttons__close">
+                    <div class="button-b">
+                        <div class="button" style="width: 15px; height: 15px;"></div>
+                    </div>
+                </button>
+            </div>
         </div>
-        <div class="titlebar_buttons__container">
-            <button type="button" class="button-a">
-                <div class="button-b">
-                    <div class="button" style="width: 15px; height: 15px;"></div>
-                </div>
-            </button>
-            <button type="button" class="button-a">
-                <div class="button-b">
-                    <div class="button" style="width: 15px; height: 15px;"></div>
-                </div>
-            </button>
-            <button type="button" class="button-a titlebar_buttons__close">
-                <div class="button-b">
-                    <div class="button" style="width: 15px; height: 15px;"></div>
-                </div>
-            </button>
+        <div class="windowchrome-a">
+            <div class="windowchrome windowchrome-b" id="windowchrome">
+                <div class="windowchrome__section" style="height: 46px"></div>
+                <div class="windowchrome__section" style="height: 80px"></div>
+            </div>
+        </div>
+        <div class="clientarea-a" style="width: 100%; height: 100%;">
+            <div class="clientarea-b">
+                <div class="clientarea" style="height: 100%; background-color: blue;"></div>
+            </div>
         </div>
     </div>
-    <div class="windowchrome-a">
-        <div class="windowchrome windowchrome-b" id="windowchrome">
-            <div class="windowchrome__section" style="height: 50px"></div>
-            <div class="windowchrome__section" style="height: 80px"></div>
-        </div>
-    </div>
-    <div class="clientarea-c" style="width: 100%; height: 400px;">
-        <div class="clientarea-d">
-            <div class="clientarea" style="height: 100%; background-color: blue;"></div>
-        </div>
-    </div>
-    <div class="taskbar-a" style="width: 100%; height: 55px;">
+    <div class="taskbar-a" style="width: 100%; height: 56px; align-self: flex-end;">
         <div class="taskbar-b">
             <div class="taskbar">
                 <button type="button" class="button-a">

@@ -30,6 +30,16 @@ export class Box extends Object2D {
         this.font_color = "black";
         this.use_text = false;
 
+        // TODO: remove, testing something
+        /* 
+        Use to import fonts
+        const font = new FontFace("W98", "url('../../W98 Practice/fonts/W95font.otf'", {
+            style: "normal",
+            weight: "400",
+        });
+        */
+
+
         this.selectable = true;
 
         //

@@ -54,6 +54,10 @@ export class Group extends Object2D {
         this.height = (object.y + object.height) - this.children[0].y;
     }
 
+    removeChildren() {
+        this.children = [];
+    }
+
     draw(ctx) {
         ctx.fillStyle = this.fill_color;
         ctx.fillRect(

@@ -1,5 +1,5 @@
-import { Box } from "../../util/Box.js";
-import { Group } from "../../util/Group.js";
+import { Box } from "../../twoDraw/Box.js";
+import { Group } from "../../twoDraw/Group.js";
 
 const canvas = document.getElementById("canvas");
 canvas.width = canvas.clientWidth;
@@ -68,12 +68,6 @@ for (let i = 0; i < memory_size; i++) {
 
 row.draw(ctx);
 column.draw(ctx);
-
-
-
-
-
-/* ctx.clearRect(0, 0, canvas.width, canvas.height); */ // TOD: wrap this in a function called "clear()" to use for updating the canvas
 
 
 

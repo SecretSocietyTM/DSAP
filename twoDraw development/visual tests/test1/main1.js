@@ -1,5 +1,5 @@
-import { Box } from "../../util/Box.js";
-import { Group } from "../../util/Group.js";
+import { Box } from "../../twoDraw/Box.js";
+import { Group } from "../../twoDraw/Group.js";
 
 const canvas = document.getElementById("canvas");
 canvas.width = canvas.clientWidth;

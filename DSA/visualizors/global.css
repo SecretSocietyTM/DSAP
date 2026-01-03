@@ -1,0 +1,59 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+/*     
+    width: 100vw;
+    height: 100vh; 
+*/
+}
+
+body {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+
+    width: 100vw;
+    height: 100vh;
+
+    padding: 5px;
+
+    background-color: black;
+}
+
+.canvas_wrapper {
+    min-width: 0;  /* Explicitly allow grid item to shrink */
+    min-height: 0; /* Explicitly allow grid item to shrink */
+}
+
+#canvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+.menubar {
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+
+    padding: 0.5rem;
+
+    background-color: rgb(27, 27, 27);
+}
+
+button {
+    padding-inline: 0.5rem;
+
+    min-width: 4rem;
+    min-height: 3rem;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+}

@@ -19,7 +19,6 @@ class LinkedList {
 
         this.head = null;
         this.tail = this.head;
-
         this.size = 0;
     }
 
@@ -179,39 +178,41 @@ function printNode(node, type) {
     );
 }
 
-// helper
-const randInt = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+if (true) {
 
-// event listener
-const l1 = new LinkedList();
-const node_values = [];
-
-document.addEventListener("keypress", e => {
-    if (e.key === "w") {
-
-        const r = randInt(10, 99);
-        node_values.push(r);
-
-        console.log("inserting ", r);
-        l1.append(r);
-        printLinkedList(l1);
-    } else if (e.key === "s") {
-
-        let r;
-
-        if (node_values.length !== 0) {
-            const idx = randInt(0, node_values.length - 1);
-            r = node_values[idx];
-
-            node_values.splice(idx, 1);
-        } else {
-            r = randInt(10, 99);
-        }
-
-        console.log("removing ", r);
-        l1.remove(r);
-        printLinkedList(l1);
+    // helper
+    const randInt = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-});
+
+    const linkedlist = new LinkedList();
+    const node_values = [];
+
+    document.addEventListener("keypress", e => {
+        if (e.key === "w") {
+
+            const r = randInt(10, 99);
+            node_values.push(r);
+
+            console.log("inserting ", r);
+            linkedlist.append(r);
+            printLinkedList(linkedlist);
+        } else if (e.key === "s") {
+
+            let r;
+
+            if (node_values.length !== 0) {
+                const idx = randInt(0, node_values.length - 1);
+                r = node_values[idx];
+
+                node_values.splice(idx, 1);
+            } else {
+                r = randInt(10, 99);
+            }
+
+            console.log("removing ", r);
+            linkedlist.remove(r);
+            printLinkedList(linkedlist);
+        }
+    });
+}

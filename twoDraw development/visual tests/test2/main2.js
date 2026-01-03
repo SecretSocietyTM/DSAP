@@ -69,7 +69,7 @@ document.body.addEventListener("click", e => {
 const t1 = new Box(500, 200, 100, 100);
 t1.stroke_color = "orange";
 t1.use_text = true;
-t1.text = "b4";
+t1.text = "t1";
 t1.draw_type = 1;
 t1.stroke_width = 10;
 t1.draw(ctx);
@@ -77,7 +77,7 @@ t1.draw(ctx);
 const t2 = new Box(590, 200, 100, 100);
 t2.stroke_color = "orange";
 t2.use_text = true;
-t2.text = "b4";
+t2.text = "t1";
 t2.draw_type = 1;
 t2.stroke_width = 10;
 t2.draw(ctx);

@@ -1,4 +1,4 @@
-import { ArrayList } from "../../ArrayList.js";
+import { LinkedList } from "../../LinkedList.js";
 
 import { Renderer } from "../../../twoDraw development/twoDraw/Renderer.js";
 import { Box } from "../../../twoDraw development/twoDraw/Box.js"
@@ -9,32 +9,29 @@ canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
 const renderer = new Renderer(canvas);
-renderer.clear("blue");
+renderer.clear("orange");
 
 // 
-// setup ArrayList
-let array_size = 4;
-let fill_size = 2;
-const sarr = new ArrayList(array_size);
-for(let i = 0; i < fill_size; i++) {
-    sarr.append(randInt(0, 100));
+// setup LinkedList
+let linkedlist_size = 4;
+const linkedlist = new LinkedList();
+for (let i = 0; i < linkedlist_size; i++) {
+    linkedlist.append(randInt(0, 100));
 }
 
-ArrayList.print(sarr);
+LinkedList.print(linkedlist);
 
 //
 // setting up visualization
 const objects = [];
 
 const row = new Group(400, canvas.height / 2 - 50);
-row.gap = 3;
-row.border = 3;
-row.fill_color = "rgb(50,50,50)";
+row.gap = 50;
 
-makeArrayListFromGroup(row, sarr);
+makeLinkedListFromGroup(row, linkedlist);
 
 objects.push(row);
-renderer.clear("blue");
+renderer.clear("orange");
 renderer.render(objects);
 
 
@@ -53,76 +50,84 @@ menubar.addEventListener("click", e => {
     case "insert":
 
         value = +prompt("value", randInt(0, 100));
-        index = +prompt("index", randInt(0, sarr.size));
-        sarr.insert(value, index);
+        index = +prompt("index", randInt(0, linkedlist.size));
+        linkedlist.insert(value, index);
         break;
 
     case "append":
 
         value = +randInt(0, 100);
-        sarr.append(value);
+        linkedlist.append(value);
         break;
 
     case "removeByIndex":
 
-        index = +prompt("index", randInt(0, sarr.size));
-        sarr.removeByIndex(index);
+        index = +prompt("index", randInt(0, linkedlist.size));
+        linkedlist.removeByIndex(index);
         break;
 
     case "removeByValue":
 
         value = +prompt("value", randInt(0, 100));
-        sarr.removeByValue(value);
+        linkedlist.removeByValue(value);
         break;
 
     case "get":
 
-        index = +prompt("index", randInt(0, sarr.size));
-        alert(sarr.get(index));
+        index = +prompt("index", randInt(0, linkedlist.size));
+        alert(linkedlist.get(index));
         break;
 
     case "set":
 
         value = +prompt("value", randInt(0, 100));
-        index = +prompt("index", randInt(0, sarr.size));
-        sarr.set(value, index);
+        index = +prompt("index", randInt(0, linkedlist.size));
+        linkedlist.set(value, index);
 
         break;
     
     case "contains":
 
         value = +prompt("value", randInt(0, 100));
-        alert(sarr.contains(value));
+        alert(linkedlist.contains(value));
         break;
 
     default:
         return;
     }
 
-    ArrayList.print(sarr);
-    makeArrayListFromGroup(row, sarr);
+    LinkedList.print(linkedlist);
+    makeLinkedListFromGroup(row, linkedlist);
 
-    renderer.clear("blue");
+    renderer.clear("orange");
     renderer.render(objects);
 });
 
 
 //
 // helper functions
-function makeArrayListFromGroup(group, arraylist) {
+function makeLinkedListFromGroup(group, linkedlist) {
     group.removeChildren();
 
     const width = 60;
     const height = 60;
 
-    for (let i = 0; i < arraylist.capacity; i++) {
+    for (let i = 0; i < linkedlist.size; i++) {
         const b = new Box(0, 0, width, height);
         b.fill_color = "white";
+        b.stroke_color = "black";
+        b.use_text = true;
+        b.text = linkedlist.get(i).value;
+        b.draw_type = 1;
+        b.stroke_width = 3;
 
-        if (i <= arraylist.size) {
-            b.use_text = true;
-            b.text = arraylist.get(i);
-        }
+        /* 
+        TODO: since the LinkedList is basically like the Arraylist (visually) 
+        I'm going to leave it as is.
+
+        After I've made good progress on Trees Ill update twoDraw to support
+        text aligned to some point, lines/arrows, and circles.
+        */
 
         group.addChild(b);
     }

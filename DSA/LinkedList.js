@@ -6,7 +6,7 @@ A linked list is dynamically resized, thus it incurs no copy penalty like an
 array would eventually incur given it has reached its static capacity
 */
 
-class LinkedList {
+export class LinkedList {
 
     Node = class {
         constructor(value) {
@@ -23,7 +23,7 @@ class LinkedList {
     }
 
     // O(n) TODO: complete
-    insert(value, i) {
+    insert(value, index) {
 
     }
 
@@ -42,29 +42,13 @@ class LinkedList {
         this.size++;
     }
 
-    // O(n)
-    contains(value) {
-        let node = this.head;
-
-        while (node !== null) {
-
-            if (node.value === value) {
-                return true;
-            };
-
-            node = node.next;
-        }
-
-        return false;
-    }
-
     // O(n) TODO: complete
-    removeAt(index) {
+    removeByIndex(index) {
 
     }
 
     // O(n)
-    remove(value) {
+    removeByValue(value) {
 
         if (this.head === null) return;
 
@@ -117,64 +101,78 @@ class LinkedList {
 
         return cur;
     }
+
+    // TODO: complete
+    set(value, index) {
+
+    }
+
+    // O(n)
+    contains(value) {
+        let node = this.head;
+
+        while (node !== null) {
+
+            if (node.value === value) {
+                return true;
+            };
+
+            node = node.next;
+        }
+
+        return false;
+    }
+
+    // static methods
+    static print(linkedlist) {
+        /* printLinkedList(linkedlist); */
+        printLinkedList(linkedlist)
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////// Visual Tests /////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-function printLinkedList(list) {
+function printLinkedList(linkedlist) {
 
-    let cur_node = list.head;
+    const top_bar = " ----    ";
+    const bot_bar = " ¯¯¯¯    ";
 
-    if (list.head === null) {
-        printNode(cur_node, "head / tail");
-        console.log(" \n \n");
-        return;
+    let top_string = top_bar.repeat(linkedlist.size);
+    let bot_string = bot_bar.repeat(linkedlist.size);
+
+    const space = 4;
+
+    let mid_string = "";
+    for (let i = 0; i < linkedlist.size; i++) {
+
+        let value = linkedlist.get(i).value;
+
+        const digits = String(value).length;
+        const padding = Math.max(space - digits, 2);
+
+        const str = " ".repeat(padding) + value + "|-->";
+
+        mid_string += "|" + str;
     }
 
-    let next_node = cur_node.next;
+    top_string += " ----";
+    mid_string += "|null|";
+    bot_string += " ¯¯¯¯";
 
-    if (list.head === list.tail) {
-        printNode(cur_node, "head / tail");
-        printNode(next_node, "");
-        console.log(" \n \n");
-        return;
-    }
-
-    printNode(cur_node, "head");
-
-    cur_node = cur_node.next;
-
-    for (let i = 0; i < 5; i++) {
-
-        next_node = cur_node.next;
-
-        if (next_node === null) break;
-
-        printNode(cur_node, "");
-
-        cur_node = cur_node.next;
-    }
-
-    printNode(cur_node, "tail");
-    printNode(next_node, "");
-
-    console.log(" \n \n");
-}
-
-function printNode(node, type) {
-
-    if (node === null) {
-        console.log(`| null|   ${type}\n`);
-        return;
+    let info_string = "";
+    if (linkedlist.size <= 1) {
+        info_string += " head\n tail";
+    } else {
+        info_string += " head" + " ".repeat(9 * (linkedlist.size - 1) - 4) + "tail";
     }
 
     console.log
     (
-        "-------\n" +
-        `|   ${node.value}|   ${type}\n` +
-        "-------\n" +
-        "   V   "
+        info_string + "\n" +
+        top_string  + "\n" +
+        mid_string  + "\n" +
+        bot_string  + "\n"
     );
 }
 
@@ -194,9 +192,9 @@ if (true) {
             const r = randInt(10, 99);
             node_values.push(r);
 
-            console.log("inserting ", r);
+            console.log("appending ", r);
             linkedlist.append(r);
-            printLinkedList(linkedlist);
+            LinkedList.print(linkedlist);
         } else if (e.key === "s") {
 
             let r;
@@ -210,9 +208,9 @@ if (true) {
                 r = randInt(10, 99);
             }
 
-            console.log("removing ", r);
-            linkedlist.remove(r);
-            printLinkedList(linkedlist);
+            console.log("removing first occurance of", r);
+            linkedlist.removeByValue(r);
+            LinkedList.print(linkedlist);
         }
     });
 }

@@ -97,6 +97,9 @@ export class Box extends Object2D {
     stroke(ctx) {
         const sw = this.stroke_width;
 
+        ctx.fillStyle = this.fill_color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+
         ctx.strokeStyle = this.stroke_color;
         ctx.lineWidth = sw;
 

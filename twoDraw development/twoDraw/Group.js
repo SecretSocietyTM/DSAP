@@ -22,7 +22,7 @@ export class Group extends Object2D {
         this.gap = 0;
         this.border = 0;
 
-        this.fill_color = "black" // TODO: can I use transparant?
+        this.fill_color = "transparant";
     }
 
     addChild(object) {

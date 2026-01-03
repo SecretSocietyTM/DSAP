@@ -9,7 +9,6 @@ canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
 const renderer = new Renderer(canvas);
-renderer.clear("blue");
 
 // 
 // setting up actual array
@@ -39,6 +38,7 @@ makeArrayListFromGroup(row, sarr);
 
 
 objects.push(row);
+renderer.clear("blue");
 renderer.render(objects);
 
 // button interaction
@@ -102,14 +102,22 @@ menubar.addEventListener("click", e => {
         return;
     }
 
+    console.log(sarr.capacity);
+
     ArrayList.print(sarr);
-    makeArrayListFromGroup(row, sarr)
+    makeArrayListFromGroup(row, sarr);
+
+    renderer.clear("blue");
     renderer.render(objects);
 });
 
 // helper function
 function makeArrayListFromGroup(group, arraylist) {
     group.removeChildren();
+
+    if (arraylist.capacity === 2) {
+        const x = 5;
+    }
 
     for (let i = 0; i < arraylist.capacity; i++) {
         const b = new Box(0, 0, e_width, e_height);

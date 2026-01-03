@@ -50,16 +50,19 @@ export class ArrayList {
 
         if (index < 0 || index > this.size) throw new Error("Index i out of bounds");
 
-        // TODO: update capacity if certain condition is met
-
         const temp = this.arr[index];
-        this.arr[index] = null;
-        this.size--;
 
         for (let i = index; i < this.size; i++) {
             this.arr[i] = this.arr[i + 1];
             this.arr[i + 1] = null;
         }
+
+        this.size--;
+
+        if (this.size * 3 <= this.capacity) {
+            this.updateCapacity(this.capacity / 2);
+        }
+
 
         return temp;
     }
@@ -107,9 +110,10 @@ export class ArrayList {
 
     // TODO: should ideally be private
     updateCapacity(required_capacity) {
-        if (required_capacity < this.capacity) {
-            throw new Error("required_capacity must be larger than the current ArrayList capacity");
-        }
+
+        required_capacity = parseInt(required_capacity);
+
+        if (required_capacity < 1) throw new Error("ArrayList cannot have a capacity less than one")
 
         const cur_cap = this.capacity
 
@@ -118,7 +122,7 @@ export class ArrayList {
             temp[i] = this.arr[i];
         }
 
-        this.capacity =  required_capacity;
+        this.capacity = required_capacity;
         this.arr = new Array(cur_cap * 2).fill(null);
         for (let i = 0; i < cur_cap; i++) {
             this.arr[i] = temp[i];

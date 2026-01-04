@@ -60,6 +60,9 @@ the titlebar / window (01/02 - 12:08AM)
 
 /* 
 Testing new method.
+*/
+
+/*
 If im being honest I've basically copied how it was done here:
 https://jdan.github.io/98.css/#button
 
@@ -74,10 +77,6 @@ Its kinda sad since I spent WAYYYY too much time figuring out how to
 make and design some of these things just for it to be done already, and 
 way better... Truly a Daniel classic!
 */
-:root {
-    --px-w: 2px;
-}
-
 .w98-button {
     background: #BDBEBD;
 
@@ -86,9 +85,6 @@ way better... Truly a Daniel classic!
         inset calc( 1 * var(--px-w)) calc( 1 * var(--px-w)) #ffffff,
         inset calc(-2 * var(--px-w)) calc(-2 * var(--px-w)) #7B7D7B,
         inset calc( 2 * var(--px-w)) calc( 2 * var(--px-w)) #DEDFDE;
-
-    /* TODO: remove, temp props */
-    margin-inline-start: 5rem;
 }
 
 .w98-button:active {

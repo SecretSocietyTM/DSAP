@@ -24,3 +24,15 @@ clientarea container
 
     background-color: #BDBEBD;
 }
+
+
+/* 
+Testing new method.
+*/
+.w98-clientarea {
+    box-shadow: 
+        inset calc(-1 * var(--px-w)) calc(-1 * var(--px-w)) #ffffff,
+        inset calc( 1 * var(--px-w)) calc( 1 * var(--px-w)) #7B7D7B,
+        inset calc(-2 * var(--px-w)) calc(-2 * var(--px-w)) #DEDFDE,
+        inset calc( 2 * var(--px-w)) calc( 2 * var(--px-w)) #000000;
+}

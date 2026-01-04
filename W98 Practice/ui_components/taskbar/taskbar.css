@@ -20,3 +20,21 @@
     display: flex;
     gap: 1rem
 }
+
+
+/* 
+Testing new method.
+*/
+.w98-taskbar {
+    display: flex;
+    gap: 1rem;
+
+    padding: 4px;
+    padding-block-start: calc(4px + 2 * var(--px-w));
+
+    background-color: #BDBEBD;
+
+    box-shadow: 
+        inset 0 calc(1 * var(--px-w)) #DEDFDE,
+        inset 0 calc(2 * var(--px-w)) #ffffff;
+}

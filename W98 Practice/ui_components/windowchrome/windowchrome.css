@@ -29,11 +29,12 @@ This is the container for a single section of
 the windowchrome like the menu bar and tool bar.
 */
 .windowchrome__section {
+    padding-block-end: var(--px-w);
+
     background-color: #BDBEBD;
 
     /* Styles modified by JS */
-    margin-block-end: 2px;
-    border-bottom: 2px solid #7B7D7B;
+    box-shadow: inset 0 calc(-1 * var(--px-w)) #7B7D7B;
     
     /* 
     TODO: also needs border-right for that cool effect
@@ -41,4 +42,27 @@ the windowchrome like the menu bar and tool bar.
     This will also require JS to remove the border
     if there is only 1 element in a row though
     */
+}
+
+
+/* 
+Testing new method.
+*/
+.w98-windowchrome {
+    display: grid;
+    gap: var(--px-w);
+
+    padding-block-start: calc(3 * var(--px-w));
+    padding-block-end:   calc(2 * var(--px-w));
+    padding-inline:      calc(2 * var(--px-w));
+
+    background-color: #ffffff;
+
+    box-shadow: 
+        inset 0                      calc( 1 * var(--px-w)) #BDBEBD,
+        inset calc(-1 * var(--px-w)) calc(-1 * var(--px-w)) #ffffff,
+        inset calc( 1 * var(--px-w)) calc( 2 * var(--px-w)) #7B7D7B,
+        inset calc(-2 * var(--px-w)) calc(-2 * var(--px-w)) #7B7D7B;
+
+    border-bottom: 8px solid #BDBEBD;;
 }

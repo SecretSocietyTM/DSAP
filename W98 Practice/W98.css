@@ -12,6 +12,10 @@
     font-style: normal;
 }
  */
+:root {
+    --px-w: 2px;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }

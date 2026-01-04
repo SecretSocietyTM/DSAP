@@ -56,3 +56,45 @@ the titlebar / window (01/02 - 12:08AM)
 
     background-color: #7B7D7B;
 }
+
+
+/* 
+Testing new method.
+If im being honest I've basically copied how it was done here:
+https://jdan.github.io/98.css/#button
+
+I stumbled upon this while looking up more Windows 98 resources
+and it does exactly what I want.
+
+I'm still going to "develop" this on my own as best as I can knowing 
+that I can use box-shadows now but I will likely be referencing the
+above link a lot.
+
+Its kinda sad since I spent WAYYYY too much time figuring out how to
+make and design some of these things just for it to be done already, and 
+way better... Truly a Daniel classic!
+*/
+:root {
+    --px-w: 2px;
+}
+
+.w98-button {
+    background: #BDBEBD;
+
+    box-shadow: 
+        inset calc(-1 * var(--px-w)) calc(-1 * var(--px-w)) #000000,
+        inset calc( 1 * var(--px-w)) calc( 1 * var(--px-w)) #ffffff,
+        inset calc(-2 * var(--px-w)) calc(-2 * var(--px-w)) #7B7D7B,
+        inset calc( 2 * var(--px-w)) calc( 2 * var(--px-w)) #DEDFDE;
+
+    /* TODO: remove, temp props */
+    margin-inline-start: 5rem;
+}
+
+.w98-button:active {
+    box-shadow: 
+        inset calc(-1 * var(--px-w)) calc(-1 * var(--px-w)) #ffffff,
+        inset calc( 1 * var(--px-w)) calc( 1 * var(--px-w)) #000000,
+        inset calc(-2 * var(--px-w)) calc(-2 * var(--px-w)) #DEDFDE,
+        inset calc( 2 * var(--px-w)) calc( 2 * var(--px-w)) #7B7D7B;
+}

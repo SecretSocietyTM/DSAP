@@ -43,12 +43,16 @@ export class ArrayList {
         this.size++;
     }
 
+    prepend(value) {
+        this.insert(value, 0);
+    }
+
     // O(1)
     removeByIndex(index) {
 
         if (this.size === 0) return;
 
-        if (index < 0 || index > this.size) throw new Error("Index i out of bounds");
+        if (index < 0 || index > this.size) throw new Error("index out of bounds");
 
         const temp = this.arr[index];
 
@@ -84,14 +88,14 @@ export class ArrayList {
     // O(1)
     get(index) {
 
-        if (index < 0 || index >= this.capacity) throw new Error("Index i out of bounds");
+        if (index < 0 || index >= this.capacity) throw new Error("index out of bounds");
 
         return this.arr[index];
     }
 
     set(value, index) {
 
-        if (index < 0 || index >= this.size) throw new Error("Index i out of bounds");
+        if (index < 0 || index >= this.size) throw new Error("index out of bounds");
 
         this.arr[index] = value;
     }
@@ -200,3 +204,16 @@ if (true) {
         }
     });
 }
+
+/* 
+1) Only a head/root which is eventually assigned the first node in the list
+structure: 
+size = 0 | head = null;
+size = 1 | (*head* 15|-)-> null
+size > 1 | (*head* 12|-)-> ( 5|-)-> null
+
+2) Both a head and tail. Where the head points to (or is equal to) the first node in the list and the tail points to (or is equal to) the last node in the list
+size = 0 | head = null;
+size = 1 | (*head* *tail* 15|-)-> null
+size > 1 | (*head* 12|-)-> ( 5|-)-> (*tail* 23|-)-> null
+*/

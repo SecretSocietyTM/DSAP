@@ -63,6 +63,12 @@ menubar.addEventListener("click", e => {
         sarr.append(value);
         break;
 
+    case "prepend":
+        
+        value = +randInt(0, 100);
+        sarr.prepend(value);
+        break;
+
     case "removeByIndex":
 
         index = +prompt("index", randInt(0, sarr.size));

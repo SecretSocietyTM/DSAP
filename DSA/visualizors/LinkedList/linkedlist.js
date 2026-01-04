@@ -60,6 +60,12 @@ menubar.addEventListener("click", e => {
         linkedlist.append(value);
         break;
 
+    case "prepend":
+        
+        value = +randInt(0, 100);
+        linkedlist.prepend(value);
+        break;
+
     case "removeByIndex":
 
         index = +prompt("index", randInt(0, linkedlist.size));

@@ -16,7 +16,7 @@ export class Queue {
     }
 
     peek() {
-        this.queue.get(0);
+        return this.queue.get(0);
     }
     
     isEmpty() {

@@ -180,7 +180,9 @@ export class LinkedList {
 
     get(index) {
 
-        if (index < 0 || index >= this.len) throw new Error("index out of bounds");
+        if (this.size === 0) return false;
+
+        if (index < 0 || index >= this.size) throw new Error("index out of bounds");
 
         let cur = this.head;
 
@@ -194,6 +196,8 @@ export class LinkedList {
 
     set(value, index) {
 
+        if (this.size === 0) return;
+
         if (index < 0 || index >= this.size) throw new Error("index out of bounds");
 
         const node = this.get(index);
@@ -202,6 +206,7 @@ export class LinkedList {
 
 
     contains(value) {
+
         let node = this.head;
 
         while (node !== null) {

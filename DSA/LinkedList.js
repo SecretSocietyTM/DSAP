@@ -97,10 +97,10 @@ export class LinkedList {
 
     removeByIndex(index) {
 
-        if (index < 0 || index >= this.size) throw new Error("index out of bounds");
-
         // 1) empty list
         if (this.size === 0) return;
+
+        if (index < 0 || index >= this.size) throw new Error("index out of bounds");
 
         // 2) only node is being removed
         if (this.size === 1 && this.index === 0) {
@@ -109,7 +109,6 @@ export class LinkedList {
 
         // 3) head is being removed
         } else if (index === 0) {
-            console.log("removing at head");
             this.head = this.head.next;
 
         } else {
@@ -319,7 +318,7 @@ function printLinkedList(linkedlist) {
 }
 
 
-if (true) {
+if (false) {
 
     // helper
     const randInt = (min, max) => {

@@ -87,43 +87,9 @@
     </div>
 </div> 
 -->
+
+<!-- All inline styles are temporary and only for testing -->
 <div style="display: flex; flex-direction: column;  width: 100vw; height: 100vh;">
-<!--     <div class="window" style="display: grid; grid-template-rows: max-content max-content auto; width: 100%; flex-grow: 1;">
-        <div class="titlebar" style="background-color: #08456B;">
-            <div class="titlebar__left">
-                <div class="titlebar_appicon"></div>
-                <p class="titlebar_title">Control Panel</p>
-            </div>
-            <div class="titlebar_buttons__container">
-                <button type="button" class="button-a">
-                    <div class="button-b">
-                        <div class="button" style="width: 15px; height: 15px;"></div>
-                    </div>
-                </button>
-                <button type="button" class="button-a">
-                    <div class="button-b">
-                        <div class="button" style="width: 15px; height: 15px;"></div>
-                    </div>
-                </button>
-                <button type="button" class="button-a titlebar_buttons__close">
-                    <div class="button-b">
-                        <div class="button" style="width: 15px; height: 15px;"></div>
-                    </div>
-                </button>
-            </div>
-        </div>
-        <div class="windowchrome-a">
-            <div class="windowchrome windowchrome-b" id="windowchrome">
-                <div class="windowchrome__section" style="height: 46px"></div>
-                <div class="windowchrome__section" style="height: 80px"></div>
-            </div>
-        </div>
-        <div class="clientarea-a" style="width: 100%; height: 100%;">
-            <div class="clientarea-b">
-                <div class="clientarea" style="height: 100%; background-color: blue;"></div>
-            </div>
-        </div>
-    </div> -->
     <div class="window" style="display: grid; grid-template-rows: max-content max-content auto; width: 100%; flex-grow: 1;">
         <div class="titlebar" style="background-color: #08456B;">
             <div class="titlebar__left">
@@ -136,10 +102,19 @@
                 <button type="button" class="w98-button titlebar_buttons__close" style="width: 22px; height: 22px;"></button>
             </div>
         </div>
-        <!-- Windowchrome is not removing the box shadow on the last element -->
         <div class="w98-windowchrome">
-            <div class="windowchrome__section" style="height: 46px"></div>
-            <div class="windowchrome__section" style="height: 80px"></div>
+            <div class="windowchrome__section" style="height: 46px; display: flex; font-size: 22px; padding-inline: 4px;">
+                <div class="w98-verticalbar"></div>
+                <p class="TODO_temp_style"><span class="w98-menuhotkey">F</span>ile</p>
+                <p class="TODO_temp_style"><span class="w98-menuhotkey">E</span>dit</p>
+                <p class="TODO_temp_style"><span class="w98-menuhotkey">V</span>iew</p>
+                <p class="TODO_temp_style"><span class="w98-menuhotkey">G</span>o</p>
+                <p class="TODO_temp_style">F<span class="w98-menuhotkey">a</span>vorites</p>
+            </div>
+            <div class="windowchrome__section" style="height: 82px; display: flex; font-size: 22px; padding-inline: 4px;">
+                <div class="w98-verticalbar"></div>
+                <p>buttons go here!</p>
+            </div>
         </div>
         <div class="w98-clientarea" style="height: 100%; background-color: blue;"></div>
     </div>

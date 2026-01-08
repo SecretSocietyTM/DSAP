@@ -1,53 +1,3 @@
-/* 
-Below are the classes for styling the 
-windowchrome container 
-*/
-.windowchrome-a {
-    padding-right: 2px;
-    padding-bottom: 2px;
-
-    background-color: white;
-
-    border-top: 2px solid #BDBEBD;
-    border-bottom: 8px solid #BDBEBD;
-}
-
-.windowchrome-b {
-    padding-left: 2px;
-    padding-top: 2px;
-
-    border-top: 2px solid #7B7D7B;
-    border-right: 2px solid #7B7D7B;
-    border-bottom: 2px solid #7B7D7B;
-    border-left: 2px solid #7B7D7B;
-}
-/* ////////// End style groups //////////
-
-
-/* 
-This is the container for a single section of
-the windowchrome like the menu bar and tool bar.
-*/
-.windowchrome__section {
-    padding-block-end: var(--px-w);
-
-    background-color: #BDBEBD;
-
-    /* Styles modified by JS */
-    box-shadow: inset 0 calc(-1 * var(--px-w)) #7B7D7B;
-    
-    /* 
-    TODO: also needs border-right for that cool effect
-    seen on the menubar / windows logo thing
-    This will also require JS to remove the border
-    if there is only 1 element in a row though
-    */
-}
-
-
-/* 
-Testing new method.
-*/
 .w98-windowchrome {
     display: grid;
     gap: var(--px-w);
@@ -64,5 +14,24 @@ Testing new method.
         inset calc( 1 * var(--px-w)) calc( 2 * var(--px-w)) #7B7D7B,
         inset calc(-2 * var(--px-w)) calc(-2 * var(--px-w)) #7B7D7B;
 
-    border-bottom: 8px solid #BDBEBD;;
+    border-bottom: calc(3 * var(--px-w)) solid #BDBEBD;;
+}
+
+
+/* 
+TODO: rename all instances to 
+w98-windowchrome__section
+*/
+.windowchrome__section {
+    background-color: #BDBEBD;
+
+    /* Styles modified by JS */
+    box-shadow: inset 0 calc(-1 * var(--px-w)) #7B7D7B;
+    
+    /* 
+    TODO: also needs border-right for that cool effect
+    seen on the menubar / windows logo thing
+    This will also require JS to remove the border
+    if there is only 1 element in a row though
+    */
 }

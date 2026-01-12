@@ -1,3 +1,5 @@
+import { Queue } from "./Queue.js";
+
 export class BST {
 
     Node = class {
@@ -122,7 +124,45 @@ export class BST {
         return node_list;
     }
 
+    height(node = this.root) {
+
+        if (node === null) return 0;
+
+        return 1 + Math.max(this.height(node.left), this.height(node.right));
+    }
     //////////////// End Recusrive Functions ////////////////
+
+    levelorder(node = this.root) {
+        
+        const arr = [];
+        const queue = new Queue();
+        const height = this.height();
+        const total_nodes = 2**height - 1;
+
+        queue.enqueue(node);
+
+        while(!queue.isEmpty() && arr.length !== total_nodes) {
+
+            const cur_node = queue.peek();
+
+            if (cur_node === null) {
+                queue.enqueue(null);
+                queue.enqueue(null);
+
+                arr.push(null);
+
+            } else {
+                queue.enqueue(cur_node.left);
+                queue.enqueue(cur_node.right);
+
+                arr.push(cur_node.value);
+            }
+
+            queue.dequeue();
+        }
+
+        return arr;
+    }
 
     static print(bst) {
         printBST(bst);
@@ -144,6 +184,7 @@ function printBST(bst) {
     console.log(nodes);
 }
 
+// manually building tree
 if (false) {
     const bst = new BST();
     const n1 = new bst.Node(1);
@@ -169,7 +210,7 @@ if (false) {
 }
 
 // manually testing delete()
-if (false) {
+if (true) {
     const bst = new BST();
     bst.insert(18);
     bst.insert(78);
@@ -177,17 +218,18 @@ if (false) {
     bst.insert(36);
     bst.insert(91);
     bst.insert(76);
-    bst.insert(73);
 
     BST.print(bst);
 
+    console.log(bst.levelorder());
+
     // delete leaf node
-    bst.delete(36);
+/*     bst.delete(36);
     BST.print(bst);
 
     // delete root node with no left child
     bst.delete(18);
-    BST.print(bst);
+    BST.print(bst); */
 }
 
 if (true) {

@@ -131,10 +131,6 @@ class DrawBST {
 
         
     }
-
-    recursiveDraw(node) {
-        
-    }
 }
 
 const tst_bst = new BST();
@@ -144,7 +140,8 @@ tst_bst.insert(60);
 tst_bst.insert(36);
 tst_bst.insert(91);
 tst_bst.insert(76);
-tst_bst.insert(73);
 
 const test = new DrawBST(tst_bst);
 test.drawBST();
+
+console.log(tst_bst.height());

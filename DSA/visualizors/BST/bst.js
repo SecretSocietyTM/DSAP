@@ -19,7 +19,8 @@ for (let i = 0; i < size; i++) {
     bst.insert(randInt(0, 100));
 }
 
-BST.print(bst);
+// TODO: uncomment
+/* BST.print(bst); */
 
 //
 // setting up visualization
@@ -101,47 +102,66 @@ function randInt(min, max) {
 }
 
 
+// DEMO
 
 
+const bst1 = new BST();
+bst1.insert(18);
+bst1.insert(78);
+bst1.insert(60);
+bst1.insert(36);
+bst1.insert(91);
+bst1.insert(76);
 
+const h = bst1.height();
+const levelorder = bst1.levelorder();
+console.log(levelorder);
+console.log(bst1.height());
 
+let bottom_y = canvas.height - 100;
+let left_x = 100;
 
-/* TODO: possibly delete */
-class DrawBST {
-    constructor(bst) {
-        this.bst = bst;
+const e_w = 60;
+const e_h = 60;
+
+const objects2 = [];
+
+for (let i = h - 1; i >= 0; i--) {
+
+    const num_nodes = (2**i);
+    const start_idx = num_nodes - 1;
+
+    const g = new Group(left_x, bottom_y);
+    g.border = 3;
+    g.gap = 3;
+    g.fill_color = "rgb(50,50,50)";
+
+    for (let j = 0; j < num_nodes; j++) { 
+        const b = new Box(0, 0, e_w, e_h);
+        b.fill_color = "white";
+        b.stroke_color = "black";
+        b.use_text = true;
+        b.text = levelorder[start_idx + j];
+        b.draw_type = 1;
+        b.stroke_width = 3;
+
+        const empty = new Box(0,0, e_w, e_h);
+        empty.fill_color = "white";
+        empty.stroke_color = "black";
+        empty.draw_type = 1;
+        empty.stroke_width = 3;
+
+        g.addChild(b);
+
+        if (j === num_nodes - 1) break;
+
+        g.addChild(empty);
     }
 
-    drawBST() {
+    bottom_y -= e_h + 6;
+    left_x += e_w * (num_nodes / 4) + 6;
 
-        const temp = [];
-
-        const width = 60;
-        const height = 60;
-
-        const root = new Box(canvas.width / 2 - width / 2, 50, width, height);
-        root.fill_color = "white";
-        root.stroke_color = "black";
-        root.use_text = true;
-        root.text = this.bst.root.value;
-        root.draw_type = 1;
-        root.stroke_width = 3;
-
-        temp.push(root);
-
-        
-    }
+    objects2.push(g);
 }
 
-const tst_bst = new BST();
-tst_bst.insert(18);
-tst_bst.insert(78);
-tst_bst.insert(60);
-tst_bst.insert(36);
-tst_bst.insert(91);
-tst_bst.insert(76);
-
-const test = new DrawBST(tst_bst);
-test.drawBST();
-
-console.log(tst_bst.height());
+renderer.render(objects2);

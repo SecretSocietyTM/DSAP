@@ -210,7 +210,7 @@ if (false) {
 }
 
 // manually testing delete()
-if (true) {
+if (false) {
     const bst = new BST();
     bst.insert(18);
     bst.insert(78);

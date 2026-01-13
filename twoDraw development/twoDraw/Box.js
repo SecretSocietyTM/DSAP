@@ -1,6 +1,7 @@
 import { Object2D } from "./Object2D.js";
 
 const DRAW_TYPE = {FILL: 0, STROKE: 1};
+const PIVOT_POINT = {TOPLEFT: 0, CENTER: 1};
 
 const objectChange_event = {type: "objectChange"};
 
@@ -14,6 +15,8 @@ export class Box extends Object2D {
         defineProperty(this, "height", height);
 
         defineProperty(this, "draw_type", DRAW_TYPE.FILL);
+        defineProperty(this, "pivot_point", PIVOT_POINT.TOPLEFT);
+
         defineProperty(this, "stroke_width", 1);
 
         this.rect = updateRect(this);
@@ -90,8 +93,14 @@ export class Box extends Object2D {
     }
 
     fill(ctx) {
+        
         ctx.fillStyle = this.fill_color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+
+        if (this.pivot_point === PIVOT_POINT.CENTER) {
+            ctx.fillRect(this.x - this.width / 2, this.y - this.height / 2, this.width, this.height);  
+        } else {
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
     }
 
     stroke(ctx) {
@@ -141,6 +150,13 @@ export class Box extends Object2D {
     }
 }
 
+/* 
+NOTE: the rect is needed for interaction. If I want to be able to click
+on the object I need to update the rectangle as it changes, or per frame.
+
+Now depending on what I end up doing with this "library" I might not
+even need this.
+*/
 function updateRect(object) {
     return {
         left: object.x,

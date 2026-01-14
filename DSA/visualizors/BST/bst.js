@@ -126,6 +126,9 @@ const e_h = 60;
 
 const objects2 = [];
 
+let cur_spacing = 0;
+let cur_some_number = 0;
+
 for (let i = h - 1; i >= 0; i--) {
 
     const num_nodes = (2**i);
@@ -136,6 +139,8 @@ for (let i = h - 1; i >= 0; i--) {
     g.gap = 3;
     g.fill_color = "rgb(50,50,50)";
 
+    cur_spacing = cur_spacing * 2 + 1;
+
     for (let j = 0; j < num_nodes; j++) { 
         const b = new Box(0, 0, e_w, e_h);
         b.fill_color = "white";
@@ -145,21 +150,25 @@ for (let i = h - 1; i >= 0; i--) {
         b.draw_type = 1;
         b.stroke_width = 3;
 
-        const empty = new Box(0,0, e_w, e_h);
-        empty.fill_color = "white";
-        empty.stroke_color = "black";
-        empty.draw_type = 1;
-        empty.stroke_width = 3;
-
         g.addChild(b);
 
         if (j === num_nodes - 1) break;
 
-        g.addChild(empty);
+        for (let i = 0; i < cur_spacing; i++) {
+            const empty = new Box(0,0, e_w, e_h);
+            empty.fill_color = "white";
+            empty.stroke_color = "black";
+            empty.draw_type = 1;
+            empty.stroke_width = 3;
+
+            g.addChild(empty);   
+        }
     }
 
     bottom_y -= e_h + 6;
-    left_x += e_w * (num_nodes / 4) + 6;
+    left_x += e_w * (cur_some_number + 1) + 3;
+
+    cur_some_number++;
 
     objects2.push(g);
 }

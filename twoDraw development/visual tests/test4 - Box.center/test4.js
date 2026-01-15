@@ -6,6 +6,8 @@ const canvas = document.getElementById("canvas");
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
+console.log(canvas.getBoundingClientRect());
+
 const renderer = new Renderer(canvas);
 renderer.clear("green");
 
@@ -41,6 +43,8 @@ Option 2 is to just update the text the same way, right before
 it is drawn.
 */
 const b3 = new Box(210, 100, 100, 100);
+b3.use_text = true;
+b3.text = "b3";
 b3.pivot_point = 1;
 
 objects.push(b1, b2, b3);

@@ -175,32 +175,3 @@ function printArrayList(sarr) {
         bot_string + "\n"
     );
 }
-
-
-if (true) {
-
-    // helper
-    const randInt = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    const arraylist = new ArrayList(4);
-    const values = [];
-
-    document.addEventListener("keypress", e => {
-        if (e.key === "w") {
-
-            const r = randInt(10, 99);
-            values.push(r);
-
-            console.log("appending ", r);
-            arraylist.append(r);
-            ArrayList.print(arraylist);
-        } else if (e.key === "s") {
-
-            console.log("removing at 0");
-            arraylist.removeByIndex(0);
-            ArrayList.print(arraylist);
-        }
-    });
-}

@@ -77,30 +77,3 @@ function printStack(stack) {
         bot_string + "\n"
     );
 }
-
-
-if (true) {
-
-    // helper
-    const randInt = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    const stack = new Stack();
-
-    document.addEventListener("keypress", e => {
-        if (e.key === "w") {
-
-            const r = randInt(10, 99);
-
-            console.log("pushing ", r);
-            stack.push(r);
-            Stack.print(stack);
-        } else if (e.key === "s") {
-
-            console.log("popping");
-            stack.pop();
-            Stack.print(stack);
-        }
-    });
-}

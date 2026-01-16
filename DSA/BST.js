@@ -179,9 +179,22 @@ function printBST(bst) {
         return;
     }
 
-    const nodes = bst.inorder();
+    const nodes = bst.levelorder();
 
-    console.log(nodes);
+    let string = "";
+
+    let cur_lvl = 1; // root level is 0 (traditionally 1)
+    for (let i = 1; i < nodes.length + 1; i++) {
+
+        if (i === 2**cur_lvl - 1) {
+            string += nodes[i - 1] + "\n";
+            cur_lvl++;
+        } else {
+            string += nodes[i - 1] + ", "
+        }
+    }
+
+    console.log(string);
 }
 
 // manually building tree
@@ -230,46 +243,4 @@ if (false) {
     // delete root node with no left child
     bst.delete(18);
     BST.print(bst); */
-}
-
-if (true) {
-
-    // helper
-    const randInt = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-
-    const bst = new BST();
-    const values = [];
-
-    document.addEventListener("keypress", e => {
-        if (e.key === "w") {
-
-            const r = randInt(10, 99);
-            values.push(r);
-
-            console.log("inserting ", r);
-            bst.insert(r);
-            BST.print(bst);
-        } else if (e.key === "s") {
-
-            let r;
-
-            if (values.length !== 0) {
-                const idx = randInt(0, values.length - 1);
-                r = values[idx];
-
-                values.splice(idx, 1);
-            } else {
-                r = randInt(10, 99);
-            }
-
-            /* TODO: remove */
-            /* r = values[0]; */
-
-            console.log("deleting", r);
-            bst.delete(r);
-            BST.print(bst);
-        }  
-    });
 }

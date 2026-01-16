@@ -73,29 +73,3 @@ function printQueue(queue) {
         bot_string + "\n"
     );
 }
-
-if (true) {
-
-    // helper
-    const randInt = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    const queue = new Queue();
-
-    document.addEventListener("keypress", e => {
-        if (e.key === "w") {
-
-            const r = randInt(10, 99);
-
-            console.log("enqueuing ", r);
-            queue.enqueue(r);
-            Queue.print(queue);
-        } else if (e.key === "s") {
-
-            console.log("dequeuing");
-            queue.dequeue();
-            Queue.print(queue);
-        }
-    });
-}

@@ -4,6 +4,12 @@ import { Stack } from "./Stack.js";
 import { Queue } from "./Queue.js";
 import { BST } from "./BST.js";
 
+import { SelectionSort } from "./SelectionSort.js";
+import { InsertionSort } from "./InsertionSort.js";
+
+import { ArrayTools } from "./array_tools.js";
+import { MergeSort } from "./MergeSort.js";
+
 const header = document.getElementById("header");
 
 let active_w_function = function() {console.log("no bound 'w' functoin")}; 
@@ -11,6 +17,7 @@ let active_s_function = function() {console.log("no bound 's' function")};
 
 let active_dsa = null;
 let active_values = null;
+let sort_function = null;
 
 document.body.addEventListener("click", e => {
     const el = e.target;
@@ -51,6 +58,7 @@ document.body.addEventListener("click", e => {
         active_s_function = queueSFunc;   
 
         break;
+
     case "bst":
 
         header.textContent = "Binary Search Tree";
@@ -60,6 +68,30 @@ document.body.addEventListener("click", e => {
         active_s_function = bstSFunc;
         break;
 
+    case "selectionsort":
+
+        header.textContent = "Selection Sort";
+        active_w_function = selectionSortWFunc;
+        sort_function = SelectionSort;
+        active_s_function = xSortSFunc;
+        break;
+
+    case "insertionsort":
+
+        header.textContent = "Insertion Sort";
+        active_w_function = insertionSortWFunc;
+        sort_function = InsertionSort;
+        active_s_function = xSortSFunc;
+        break;
+
+    case "mergesort":
+
+        header.textContent = "Merge Sort";
+        active_w_function = mergeSortWFunc;
+        sort_function = MergeSort;
+        active_s_function = xSortSFunc;
+        break;
+    
     }
 });
 
@@ -170,6 +202,49 @@ function bstSFunc(bst, arr) {
     console.log("deleting", r);
     bst.delete(r);
     BST.print(bst);
+}
+
+//////////////////////////// Selection Sort ////////////////////////////
+function selectionSortWFunc() {
+    const arr = ArrayTools.generateArray(10, 20);
+    ArrayList.printRaw(arr);
+    SelectionSort(arr.arr);
+    ArrayList.printRaw(arr);
+}
+
+//////////////////////////// Insertion Sort ////////////////////////////
+function insertionSortWFunc() {
+    const arr = ArrayTools.generateArray(10, 20);
+    ArrayList.printRaw(arr);
+    InsertionSort(arr.arr);
+    ArrayList.printRaw(arr);
+}
+
+//////////////////////////// Merge Sort ////////////////////////////
+function mergeSortWFunc() {
+    const arr = ArrayTools.generateArray(10, 20);
+    ArrayList.printRaw(arr);
+    MergeSort(arr.arr);
+    ArrayList.printRaw(arr);
+}
+
+
+// NOTE: this doesn't seem that reliable for measuring performance
+// until I learn more about how engines work this will give values ranging from
+// 0ms to 0.006ms.
+function xSortSFunc() {
+    const repeat_count = +prompt("repeat count?", 50);
+    const array_size = +prompt("array size?", 500000);
+    console.log("repeating: ", repeat_count);
+    console.log("fixed array size of: ", array_size);
+
+    console.log("average runtime: " + 
+        ArrayTools.averageSortTime(
+            sort_function, 
+            Math.max(50, repeat_count), 
+            Math.max(50000, array_size)
+        )
+        + "ms");
 }
 
 

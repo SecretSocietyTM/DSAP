@@ -138,6 +138,10 @@ export class ArrayList {
     static print(sarr) {
         printArrayList(sarr);
     }
+
+    static printRaw(array) {
+        console.log(array.arr);
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

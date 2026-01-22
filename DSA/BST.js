@@ -79,7 +79,7 @@ export class BST {
 
             // find successor from right subtree (leftmost node)
             let cur = node.right;
-            while(cur.left !== null) {
+            while (cur.left !== null) {
                 cur = cur.left;
             }
 
@@ -141,7 +141,7 @@ export class BST {
 
         queue.enqueue(node);
 
-        while(!queue.isEmpty() && arr.length !== total_nodes) {
+        while (!queue.isEmpty() && arr.length !== total_nodes) {
 
             const cur_node = queue.peek();
 

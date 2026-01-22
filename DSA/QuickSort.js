@@ -30,24 +30,3 @@ function recursiveQuickSort(array, start, end) {
 export function QuickSort(array) {
     recursiveQuickSort(array, 0, array.length);
 }
-
-/* TODO: temp, remove */
-import { ArrayList } from "./ArrayList.js";
-if (false) 
-{
-
-const test = new ArrayList(1);
-test.append(43);
-test.append(27);
-test.append(45);
-test.append(24);
-test.append(35);
-test.append(47);
-test.append(22);
-test.append(48);
-
-
-ArrayList.print(test); // unsorted
-QuickSort(test.arr);
-ArrayList.print(test); // sorted
-}

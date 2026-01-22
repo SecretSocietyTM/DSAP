@@ -6,9 +6,10 @@ import { BST } from "./BST.js";
 
 import { SelectionSort } from "./SelectionSort.js";
 import { InsertionSort } from "./InsertionSort.js";
+import { MergeSort } from "./MergeSort.js";
+import { QuickSort } from "./QuickSort.js";
 
 import { ArrayTools } from "./array_tools.js";
-import { MergeSort } from "./MergeSort.js";
 
 const header = document.getElementById("header");
 
@@ -92,6 +93,13 @@ document.body.addEventListener("click", e => {
         active_s_function = xSortSFunc;
         break;
     
+    case "quicksort":
+
+        header.textContent = "Quick Sort";
+        active_w_function = quickSortWFunc;
+        sort_function = QuickSort;
+        active_s_function = xSortSFunc;
+        break;
     }
 });
 
@@ -227,6 +235,15 @@ function mergeSortWFunc() {
     MergeSort(arr.arr);
     ArrayList.printRaw(arr);
 }
+
+//////////////////////////// Quick Sort ////////////////////////////
+function quickSortWFunc() {
+    const arr = ArrayTools.generateArray(10, 20);
+    ArrayList.printRaw(arr);
+    QuickSort(arr.arr);
+    ArrayList.printRaw(arr);
+}
+
 
 
 // NOTE: this doesn't seem that reliable for measuring performance

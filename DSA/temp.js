@@ -72,32 +72,32 @@ document.body.addEventListener("click", e => {
     case "selectionsort":
 
         header.textContent = "Selection Sort";
-        active_w_function = selectionSortWFunc;
         sort_function = SelectionSort;
+        active_w_function = xSortWFunc;
         active_s_function = xSortSFunc;
         break;
 
     case "insertionsort":
 
         header.textContent = "Insertion Sort";
-        active_w_function = insertionSortWFunc;
         sort_function = InsertionSort;
+        active_w_function = xSortWFunc;
         active_s_function = xSortSFunc;
         break;
 
     case "mergesort":
 
         header.textContent = "Merge Sort";
-        active_w_function = mergeSortWFunc;
         sort_function = MergeSort;
+        active_w_function = xSortWFunc;
         active_s_function = xSortSFunc;
         break;
     
     case "quicksort":
 
         header.textContent = "Quick Sort";
-        active_w_function = quickSortWFunc;
         sort_function = QuickSort;
+        active_w_function = xSortWFunc;
         active_s_function = xSortSFunc;
         break;
     }
@@ -212,39 +212,13 @@ function bstSFunc(bst, arr) {
     BST.print(bst);
 }
 
-//////////////////////////// Selection Sort ////////////////////////////
-function selectionSortWFunc() {
+//////////////////////////// Sorting ////////////////////////////
+function xSortWFunc() {
     const arr = ArrayTools.generateArray(10, 20);
     ArrayList.printRaw(arr);
-    SelectionSort(arr.arr);
+    sort_function(arr.arr);
     ArrayList.printRaw(arr);
 }
-
-//////////////////////////// Insertion Sort ////////////////////////////
-function insertionSortWFunc() {
-    const arr = ArrayTools.generateArray(10, 20);
-    ArrayList.printRaw(arr);
-    InsertionSort(arr.arr);
-    ArrayList.printRaw(arr);
-}
-
-//////////////////////////// Merge Sort ////////////////////////////
-function mergeSortWFunc() {
-    const arr = ArrayTools.generateArray(10, 20);
-    ArrayList.printRaw(arr);
-    MergeSort(arr.arr);
-    ArrayList.printRaw(arr);
-}
-
-//////////////////////////// Quick Sort ////////////////////////////
-function quickSortWFunc() {
-    const arr = ArrayTools.generateArray(10, 20);
-    ArrayList.printRaw(arr);
-    QuickSort(arr.arr);
-    ArrayList.printRaw(arr);
-}
-
-
 
 // NOTE: this doesn't seem that reliable for measuring performance
 // until I learn more about how engines work this will give values ranging from

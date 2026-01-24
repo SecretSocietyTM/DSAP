@@ -3,11 +3,11 @@ const DEFAULT_CAPACITY = 5;
 // TODO: figure out runtimes since they are all messed up now
 
 export class ArrayList {
-    constructor(capacity = DEFAULT_CAPACITY) {
+    constructor(capacity = DEFAULT_CAPACITY, fill = null) {
 
         if (capacity < 1) throw new Error("ArrayList cannot have a capacity less than one");
 
-        this.arr = new Array(capacity).fill(null);
+        this.arr = new Array(capacity).fill(fill);
         this.capacity = capacity;
         this.size = 0;
     }

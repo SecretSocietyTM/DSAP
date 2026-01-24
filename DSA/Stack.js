@@ -16,7 +16,7 @@ export class Stack {
     }
 
     peek() {
-        return this.stack.get(0);
+        return this.stack.get(0).value;
     }
 
     isEmpty() {

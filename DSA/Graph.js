@@ -7,7 +7,7 @@ export class Graph {
     }
 
     nodeCount() {
-        return this.nodes.size;
+        return this.nodes.length;
     }
 
     static print(graph) {
@@ -34,7 +34,7 @@ function graphFromCSV(csv) {
         let weight;
 
         if (header2 === "w" && vals.length === 3) {
-            weight = vals[2];
+            weight = +vals[2];
         } else {
             weight = 1;
         }

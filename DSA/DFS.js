@@ -71,16 +71,16 @@ export function DepthFirstTraversal(graph, start) {
 // w = weighted | uw = unweighted
 // d = directed | ud = undirected
 import { Graph } from "./Graph.js";
-if (true)
+if (false)
 {
 
 // from book
 const csv = 
 `   
-d
+ud
 uw
-A,B
 A,C
+A,B
 B,D
 C,E
 D,F

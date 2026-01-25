@@ -70,7 +70,7 @@ export function BreadthFirstTraversal(graph, start) {
 // w = weighted | uw = unweighted
 // d = directed | ud = undirected
 import { Graph } from "./Graph.js";
-if (true)
+if (false)
 {
 
 // from book
